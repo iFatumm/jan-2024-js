@@ -74,20 +74,29 @@
 //         console.log(`їдемо зі швидкістю ${maxspeed} на годину`)
 //     };
 //     this.info = function () {
-//         console.log(`model - ${model}, manufacturer - ${manufacturer}, year - ${year}, maxspeed - ${maxspeed}, enginevolume - ${enginevolume}`)
+//         console.log(`model - ${model}, manufacturer - ${manufacturer}, year - ${this.year}, maxspeed - ${this.maxspeed}, enginevolume - ${enginevolume}`)
 //     };
 //     this.increaseMaxSpeed = function (newSpeed) {
-//         console.log(`maxspeed ${newSpeed} now`)
+//         this.maxspeed += newSpeed;
+//         console.log(`new max speed ${this.maxspeed} now`)
 //     };
 //     this.changeYear = function (newValue) {
-//         console.log(`the year of the car release has changed ${newValue}`)
+//         this.year = newValue
+//         console.log(`the year of the car release has changed ${this.year}`)
 //     };
 //     this.addDriver = function (driver) {
+//         this.driver = driver;
 //         console.log(`info of driver: name - ${driver.name}, he is ${driver.age} years old, he has ${driver.experience} years experience`)
 //     }
 // }
 // let car = new Car('k5', 'kia', 2016, 260, 1.7 );
-// console.log(car.drive(), car.info(), car.increaseMaxSpeed(280), car.changeYear(2014), car.addDriver({name: 'kolya', age: 37, experience: 12}))
+// console.log(car)
+// car.drive();
+// car.info();
+// car.increaseMaxSpeed(20);
+// car.changeYear(2020);
+// car.addDriver({name: 'kolya', age: 37, experience: 12});
+// console.log(car)
 //
 //
 // - (Те саме, тільки через клас)
