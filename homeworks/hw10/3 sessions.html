@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sessions</title>
+    <style>
+        .main {
+            border: blue 1px solid;
+            width: 300px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let page = localStorage.getItem('3 sessions.html');
+    let sessions = page ? JSON.parse(page) : [];
+
+    for (let session of sessions) {
+        let mainDiv = document.createElement('div');
+        let date = document.createElement('div');
+        let time = document.createElement('div');
+        let device = document.createElement('div');
+
+        mainDiv.classList.add('main')
+
+        let fullDate = standart(session.date)
+        date.innerText = `Date: ${fullDate.day}/${fullDate.month}/${fullDate.year}`;
+        time.innerText = `Time: ${fullDate.hours}:${fullDate.minutes}:${fullDate.seconds}`;
+        device.innerText = `Device: ${session.appCodeName}: ${session.appVersion}`;
+
+        mainDiv.append(date, time, device);
+        document.body.appendChild(mainDiv)
+    }
+
+    function standart(dateString) {
+        let year = new Date(dateString).getFullYear().toString();
+        let month = (new Date(dateString).getMonth() + 1).toString();
+        let day = new Date(dateString).getDate().toString();
+        let hours = new Date(dateString).getHours().toString();
+        let minutes = new Date(dateString).getMinutes().toString();
+        let seconds = new Date(dateString).getSeconds().toString();
+        return {
+            year: year,
+            month: month.length < 2 ? `0${month}` : month,
+            day: day.length < 2 ? `0${day}` : day,
+            hours: hours.length < 2 ? `0${hours}` : hours,
+            minutes: minutes.length < 2 ? `0${minutes}` : minutes,
+            seconds: seconds.length < 2 ? `0${seconds}` : seconds
+        }
+    }
+</script>
+</body>
+</html>
