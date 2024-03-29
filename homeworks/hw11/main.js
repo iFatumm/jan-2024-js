@@ -48,3 +48,30 @@
 //     вивести їх id + name списком та додати посилання з href = user-details.html?id=XXX (замість ХХХ - айді юзера)
 // при кліку на посилання перехід на відповідну сторінку, на якій буде вся інформація про користувача (всі 15 полів)
 // отримана через додатковий запит (https://jsonplaceholder.typicode.com/users/XXX   де ХХХ - айді користувача)
+
+let URL = 'http://jsonplaceholder.typicode.com/users';
+
+function getUsers(url) {
+    fetch(url).then(response => response.json())
+        .then(data => {
+            let users = data
+            showUsers(users)
+    });
+}
+getUsers(URL)
+
+function showUsers (users) {
+
+    let usersList = document.createElement('ul');
+
+    for (const user of users) {
+        console.log(user);
+        let oneUser = document.createElement('li');
+        oneUser.innerHTML = user.id +'.' + ' ' + user.name;
+
+
+
+        usersList.append(oneUser);
+    }
+    document.body.appendChild(usersList)
+}
