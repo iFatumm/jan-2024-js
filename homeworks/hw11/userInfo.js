@@ -20,41 +20,35 @@ function infoOfOneUser(userInfo){
     let username = document.createElement('li');
     let website = document.createElement('li');
     let address = document.createElement('li');
+    let geo = document.createElement('li');
+    let company = document.createElement('li')
 
     email.innerHTML = `Email: ${userInfo.email}`;
     id.innerHTML = `id: ${userInfo.id}`;
-    name.innerHTML = `id: ${userInfo.name}`;
-    phone.innerHTML = `id: ${userInfo.phone}`;
-    username.innerHTML = `id: ${userInfo.username}`;
-    website.innerHTML = `id: ${userInfo.website}`;
+    name.innerHTML = `name: ${userInfo.name}`;
+    phone.innerHTML = `phone: ${userInfo.phone}`;
+    username.innerHTML = `username: ${userInfo.username}`;
+    website.innerHTML = `website: ${userInfo.website}`;
+
 
     let fullAddress = document.createElement('li');
-    fullAddress.classList.add('fullAddress')
+    fullAddress.classList.add('fullAddress');
+    let companyInfo = document.createElement('li');
+
 
     for (const addressElement in userInfo.address) {
 
-        let company = document.createElement('li');
+
         // console.log(addressElement);
 
-        fullAddress.innerHTML = `City:${userInfo.address.city}, Street${userInfo.address.street}, Suite: ${userInfo.address.suite}, Zipcode: ${userInfo.address.zipcode}, Geo: ${userInfo.address.geo}`;
-        let geo = document.createElement('p')
-        console.log(userInfo.address.geo)
+        fullAddress.innerHTML = `Address: City: ${userInfo.address.city}, Street: ${userInfo.address.street}, Suite: ${userInfo.address.suite}, Zipcode: ${userInfo.address.zipcode}, Geo: ${userInfo.address.geo.lat}, ${userInfo.address.geo.lng}`;
 
-        // for (const geolocation in userInfo.address.geo) {
-        //     geo.innerHTML = `lat: ${userInfo.address.geo.lat}, lng: ${userInfo.address.geo.lng}`;
-        //     // fullAddress.appendChild(geo)
-        //
-        //
-        // }
-
-
-
-
-
-
-        address.append(fullAddress)
-        
+        address.append(fullAddress);
+    }
+    for (const companyKey in userInfo.company) {
+        companyInfo.innerHTML = `Company: BS - ${userInfo.company.bs}, catch phrase - ${userInfo.company.catchPhrase}, name - ${userInfo.company.name}`;
+        company.append(companyInfo)
     }
 
-    aboutUser.append(email, id, name, phone, username, website, address)
+    aboutUser.append(username, id, name, phone, email, website, address, company)
 }
